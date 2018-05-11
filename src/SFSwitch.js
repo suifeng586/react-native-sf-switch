@@ -19,6 +19,8 @@ export default class SFSwitch extends Component {
         checked: PropTypes.bool,
         disabled: PropTypes.bool,
         duration: PropTypes.number,
+        borderColor: PropTypes.string,
+        disabledOpacity: PropTypes.number,
         containerColor: PropTypes.string,
         containerStyle: PropTypes.object,
         onChange: PropTypes.func,
@@ -29,6 +31,8 @@ export default class SFSwitch extends Component {
         checked:false,
         duration:200,
         disabled:false,
+        borderColor:'rgba(233,233,233,1)',
+        disabledOpacity:0.5,
         containerColor:'red',
         width:80,
         height:30,
@@ -118,7 +122,7 @@ export default class SFSwitch extends Component {
     render() {
         var opacity = 1;
         if (this.props.disabled){
-            opacity = 0.5;
+            opacity = this.props.disabledOpacity;
         }
         return (
             <TouchableWithoutFeedback onPress={this.clickSwitch}>
@@ -127,7 +131,7 @@ export default class SFSwitch extends Component {
                     height:this.props.height,
                     borderRadius:this.props.height/2,
                     borderWidth:1,
-                    borderColor:'rgba(230,230,230,1)',
+                    borderColor:this.props.borderColor,
                     justifyContent:'center',
                     opacity:opacity
                 },this.props.containerStyle]}>
